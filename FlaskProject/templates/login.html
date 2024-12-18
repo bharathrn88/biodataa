@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #ff6a00, #ee0979, #ffb347, #4e54c8, #8f94fb);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .navbar1 {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            background: #0c111b;
+            z-index: 9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo1 {
+            height: 70px;
+        }
+
+        .nav-links1 {
+            margin-top: 10px;
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-items1 a {
+            text-decoration: none;
+            margin-left: 20px;
+            text-transform: capitalize;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .right-container1 {
+            display: block;
+            margin-left: auto;
+        }
+
+        .search-box1 {
+            border: none;
+            border-bottom: 1px solid #aaa;
+            background-color: transparent;
+            outline: none;
+            height: 30px;
+            color: #fff;
+            width: 250px;
+            text-transform: capitalize;
+            font-size: 16px;
+            font-weight: 500;
+            transition: .5s;
+        }
+
+        .search-box1:focus {
+            width: 400px;
+            border-color: #1f80e0;
+        }
+
+        .sub-btn1 {
+            background-color: #1f80e0;
+            height: 30px;
+            padding: 0 20px;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            margin: 0 10px;
+        }
+
+        .login-link {
+            color: #fff;
+            opacity: 0.9;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 500px;
+            height: 450px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .wrapper .text-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 30px;
+            font-family: 'Parisienne', cursive;
+            user-select: none;
+        }
+
+        .wrapper img {
+            position: absolute;
+            right: -90px;
+            bottom: -60px;
+            width: 50%;
+        }
+
+        .form-wrapper {
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper.active .form-wrapper.login {
+            transform: translateX(-100%);
+        }
+
+        .wrapper .form-wrapper.register {
+            position: absolute;
+            margin-top: 15px;
+            transform: translateX(100%);
+            transition: .5s ease-in-out;
+        }
+
+        .wrapper.active .form-wrapper.register {
+            transform: translateX(0);
+        }
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+        }
+
+        .input-box {
+            position: relative;
+            width: 320px;
+            margin: 30px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #333;
+            outline: none;
+            border-radius: 40px;
+            font-size: 1em;
+            color: #333;
+            padding: 0 20px 0 40px;
+        }
+
+        .input-box input::placeholder {
+            color: rgba(51, 51, 51, 0.5);
+        }
+
+        .input-box .icon {
+            position: absolute;
+            left: 15px;
+            color: #333;
+            font-size: 1.2em;
+            line-height: 55px;
+        }
+
+        .forgot-pass {
+            margin: -15px 0 15px 15px;
+        }
+
+        .forgot-pass a {
+            color: #333;
+            font-size: .9em;
+            text-decoration: none;
+        }
+
+        .forgot-pass a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            height: 45px;
+            background: #333;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        .sign-link {
+            font-size: .9em;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .sign-link p {
+            color: #333;
+        }
+
+        .sign-link p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper login">
+            <form action="/sub" method="post">
+                <h2>Login</h2>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit">Login</button>
+                <div class="sign-link">
+                    <p>Don't have an account? <a href="#" onclick="registerActive()">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-wrapper register">
+            <form action="/subm" method="post">
+                <h2>Registration</h2>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <label for="register_name"></label>
+                    <input type="text" id="register_name" name="register_name" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <label for="register_email"></label>
+                    <input type="email" id="register_email" name="register_email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <label for="register_password"></label>
+                    <input type="password" id="register_password" name="register_password" placeholder="Password" required>
+                </div>
+                <button type="submit" href="/login">Register</button>
+                <div class="sign-link">
+                    <p>Already have an account? <a href="/login" onclick="loginActive()">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        function registerActive() {
+            wrapper.classList.toggle('active');
+        }
+        function loginActive() {
+            wrapper.classList.toggle('active');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
